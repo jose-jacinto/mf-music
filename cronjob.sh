@@ -1,7 +1,10 @@
 #!/bin/sh
 echo "\n------------" &&
 echo "$(date)\n" &&
+cd ~/mf-music &&
 pm2 stop 0 &&
+pm2 delete 0 &&
+mpc stop &&
 rm -rf mf-music &&
 git clone https://github.com/jose-jacinto/mf-music.git &&
 #sudo apt-get update &&
@@ -9,5 +12,5 @@ git clone https://github.com/jose-jacinto/mf-music.git &&
 cd ~/mf-music &&
 npm install &&
 git checkout package-lock.json &&
-pm2 start index.js
+pm2 start index.js &&
 pm2 save
