@@ -1,0 +1,21 @@
+{
+  "name": "piradio",
+  "version": "1.0.0",
+  "description": "Music Player for Raspberry Pi based in MPD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jose-jacinto/mf-music"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "José Jacinto",
+  "license": "MIT",
+  "dependencies": {
+    "get-folder-size": "^2.0.0",
+    "socket.io-client": "^2.1.1",
+    "mpd": "^1.3.0",
+    "node-cmd": "^3.0.0"
+  }
+}

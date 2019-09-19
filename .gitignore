@@ -1,0 +1,5 @@
+node_modules
+cronjob.log
+.vscode/
+cache
+core
