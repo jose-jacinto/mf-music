@@ -281,12 +281,14 @@ socket.on('play', (msg) => {
   playlist = msg.playlist;
   const finalPlaylist = [];
 
+  console.log(msg)
+
   msg.playlistLocal.forEach((url, index) => {
     try {
       if (fs.statSync(url).size === 0) { // if the file does not exist or is empty
-        // console.log(`NOT playing from cache ${msg.playlist[index]}`)
+        console.log(`# Added song to playlist (from S3) : ${msg.playlist[index]}`);
       } else {
-        console.log(`playing from cache ${path.resolve(__dirname,url.replace(/(\s+)/g, '\\$1'))}`)
+        console.log(`# Added song to playlist (from cache) : ${path.resolve(__dirname,url.replace(/(\s+)/g, '\\$1'))}`)
         finalPlaylist.push(url);
 
         Lecmd.run(`mpc add ${path.resolve(__dirname, url).replace(/(\s+)/g, '\\$1')}`);
