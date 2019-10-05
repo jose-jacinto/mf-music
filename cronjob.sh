@@ -25,5 +25,7 @@ if [ "$HEADHASH" != "$UPSTREAMHASH" ]
  else
    echo -e ${FINISHED}Current branch is up to date with origin/master. Exiting${NOCOLOR}
    echo
+   pm2 start index.js
+   pm2 save
    exit 0
 fi
