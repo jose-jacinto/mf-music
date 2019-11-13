@@ -21,6 +21,8 @@ if [ "$HEADHASH" != "$UPSTREAMHASH" ]
     git checkout package-lock.json
     pm2 start index.js
     pm2 save
+    sudo raspi-config --expand-rootfs
+    sudo reboot
    
  else
    echo -e ${FINISHED}Current branch is up to date with origin/master. Exiting${NOCOLOR}
