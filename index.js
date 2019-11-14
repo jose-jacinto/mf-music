@@ -9,7 +9,7 @@ const getSize = require('get-folder-size');
 
 const default_volume = 75;
 const spot_volume = 95;
-const version = '1.0.1';
+const version = '1.0.2';
 const MaxSizeAllowedBytes = 4000000000; // 4000000000 == 4Gb
 
 const mpd = require('mpd'),
