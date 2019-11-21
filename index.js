@@ -4,12 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 const io = require('socket.io-client');
-
 const getSize = require('get-folder-size');
 
 const default_volume = 75;
 const spot_volume = 95;
-const version = '1.0.1';
+const version = '1.0.2';
 const MaxSizeAllowedBytes = 4000000000; // 4000000000 == 4Gb
 
 const mpd = require('mpd'),
@@ -35,11 +34,8 @@ mpdClient.on('ready', function() {
   winston.log('info', `MPD Client is Ready with version : ${version}`, { labels: [`${pharmacy.ANF}`, 'radio'] });
 });
 
-
-
 const socket = io( (pharmacy.env === "PROD") ? 'https://servicos.maisfarmacia.org' : 'http://192.168.2.102:9012', { path: '/piradio' });
 console.log(  (pharmacy.env === "PROD") ? 'Started In PROD' : 'Started In DEV' )
-
 
 let connected = false;
 let playing = false;
