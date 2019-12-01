@@ -9,21 +9,17 @@ const getSize = require('get-folder-size');
 
 const default_volume = 75;
 const spot_volume = 95;
-const version = '1.0.3';
+const version = '1.0.4';
 const MaxSizeAllowedBytes = 4000000000; // 4000000000 == 4Gb
 
-// const mpd = require('mpd'),
-//   cmd = mpd.cmd
-//   const mpdClient = mpd.connect({
-//   port: 6600,
-//   host: 'localhost',
-// });
+const mpd = require('mpd'),
+  cmd = mpd.cmd
+  const mpdClient = mpd.connect({
+  port: 6600,
+  host: 'localhost',
+});
 
-// const pharmacy = require('/boot/pharmacy.json');
-const pharmacy = {
-  env: 'DEV',
-  ANF: '7234'
-}
+const pharmacy = require('/boot/pharmacy.json');
 
 http.get('http://worldtimeapi.org/api/timezone/Europe/Lisbon', (resp) => {
   let data = '';
@@ -34,7 +30,7 @@ http.get('http://worldtimeapi.org/api/timezone/Europe/Lisbon', (resp) => {
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
     let curretDateTime = JSON.parse(data).datetime;
-    cmdEngine.run(` sudo date -s "${curretDateTime}"`);
+    cmdEngine.run(`sudo date -s "${curretDateTime}"`);
   });
 }).on("error", (err) => {
   console.log("Error: " + err.message);
@@ -43,7 +39,6 @@ http.get('http://worldtimeapi.org/api/timezone/Europe/Lisbon', (resp) => {
 let winston = require('winston');
 let {Loggly} = require('winston-loggly-bulk');
 
-return;
 winston.add(new Loggly({
     token: "eef2d315-5ede-4cbd-b82c-8638bbdfb792",
     subdomain: "maisfarmacia",

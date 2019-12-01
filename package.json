@@ -1,6 +1,6 @@
 {
   "name": "piradio",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Music Player for Raspberry Pi based in MPD",
   "repository": {
     "type": "git",
