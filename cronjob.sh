@@ -1,5 +1,6 @@
 #!/bin/sh
 cd ~/mf-music
+
 git fetch
 HEADHASH=$(git rev-parse HEAD)
 UPSTREAMHASH=$(git rev-parse master@{upstream})
@@ -14,6 +15,7 @@ if [ "$HEADHASH" != "$UPSTREAMHASH" ]
  then
     echo -e ${ERROR}Not up to date with origin. Cloning and installing.${NOCOLOR}
     cd ~
+    sh ~/mf-music/pre_update.sh
     rm -rf mf-music
     git clone https://github.com/jose-jacinto/mf-music.git
     cd ~/mf-music
@@ -21,9 +23,7 @@ if [ "$HEADHASH" != "$UPSTREAMHASH" ]
     git checkout package-lock.json
     pm2 start index.js
     pm2 save
-    sudo raspi-config --expand-rootfs
-    sudo reboot
-   
+    sh ~/mf-music/post_update.sh
  else
    echo -e ${FINISHED}Current branch is up to date with origin/master. Exiting${NOCOLOR}
    echo
