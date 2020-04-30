@@ -50,7 +50,7 @@ mpdClient.on('ready', function() {
   winston.log('info', `MPD Client is Ready with version : ${version}`, { labels: [`${pharmacy.ANF}`, 'radio'] });
 });
 
-const socket = io( (pharmacy.env === "PROD") ? 'http://be.maisfarmacia.org' : 'http://192.168.2.102:9012', { path: '/piradio' });
+const socket = io( (pharmacy.env === "PROD") ? 'https://be.maisfarmacia.org' : 'http://192.168.2.102:9012', { path: '/piradio' });
 console.log(  (pharmacy.env === "PROD") ? 'Started In PROD' : 'Started In DEV' )
 
 let connected = false;
