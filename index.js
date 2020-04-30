@@ -9,7 +9,7 @@ const getSize = require('get-folder-size');
 
 const default_volume = 75;
 const spot_volume = 95;
-const version = '1.0.5';
+const version = '1.0.6';
 const MaxSizeAllowedBytes = 4000000000; // 4000000000 == 4Gb
 
 const mpd = require('mpd'),
@@ -50,7 +50,7 @@ mpdClient.on('ready', function() {
   winston.log('info', `MPD Client is Ready with version : ${version}`, { labels: [`${pharmacy.ANF}`, 'radio'] });
 });
 
-const socket = io( (pharmacy.env === "PROD") ? 'http://be.maisfarmacia.org:9012' : 'http://192.168.2.102:9012', { path: '/piradio' });
+const socket = io( (pharmacy.env === "PROD") ? 'http://be.maisfarmacia.org' : 'http://192.168.2.102:9012', { path: '/piradio' });
 console.log(  (pharmacy.env === "PROD") ? 'Started In PROD' : 'Started In DEV' )
 
 let connected = false;
